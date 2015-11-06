@@ -10,7 +10,8 @@ class Game extends Model
 
     protected $fillable = [
     	'name',
-    	'category_id',
+        'category_id',
+    	'user_id',
 
     ];
 
@@ -19,6 +20,8 @@ class Game extends Model
     }
 
 	public function user(){
-		return $this->belongsTo('App\User');
+		// return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User');
+
 	}
 }

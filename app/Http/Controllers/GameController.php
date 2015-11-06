@@ -22,8 +22,6 @@ class GameController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-
-
         //for test only
         $currentUser =  \Auth::user();
         //echo $currentUser->name;
@@ -42,8 +40,11 @@ class GameController extends Controller
      */
     public function create() {
         $category = Category::all();
-
-        return view('games.create', ['categories' => $category]);    
+        $games = Game::all();
+        return view('games.create', [
+            'categories' => $category,
+            'games' => $games
+            ]);    
     }
 
     /**
@@ -53,8 +54,8 @@ class GameController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CreateGameRequest $request) {
-
-        Game::create(Request::all());
+        $game = new Game($request->all());
+        \Auth::user()->games()->save($game);
         
         return redirect('games');
     }
@@ -66,7 +67,8 @@ class GameController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        //
+        $game = Game::findOrFail($id);
+        return view('games.show', compact('game'));    
     }
 
     /**
@@ -76,6 +78,8 @@ class GameController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
+        $game = Game::findOrFail($id);
+        return view('games.edit', compact('game'));
         //
     }
 

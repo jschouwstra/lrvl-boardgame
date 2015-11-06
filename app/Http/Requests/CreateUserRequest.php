@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use App\User;
 
-class CreateGameRequest extends Request
+class CreateUserRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +23,8 @@ class CreateGameRequest extends Request
      */
     public function rules()
     {
-    return [
-        'name' => 'unique:games,name,NULL,id,user_id,'.\Auth::user()->id       
+        return [
+            'user'  =>      'unique:users'
         ];
     }
 }

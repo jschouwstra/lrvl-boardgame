@@ -2,27 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   {!! HTML::script('_asset/js/jquery-1.11.3.min.js') !!}
-  <!--
-<script src="_asset/js/jquery-1.11.3.min.js"></script>
--->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Boardgame Collection</title>
-<!-- BOOTSTRAP STYLES-->
-{{--   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
---}}  <!-- FONTAWESOME STYLES-->
 {!! HTML::style('_asset/css/bootstrap.css') !!} 
 {!! HTML::style('_asset/css/font-awesome.css') !!} 
 {!! HTML::style('_asset/js/morris/morris-0.4.3.min.css') !!} 
 {!! HTML::style('_asset/css/custom.css') !!} 
-
-{{--   <link href="_asset/css/font-awesome.css" rel="stylesheet" />
---}}  <!-- MORRIS CHART STYLES-->
-{{--   <link href="_asset/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
---}}  <!-- CUSTOM STYLES-->
-{{--   <link href="_asset/css/custom.css" rel="stylesheet" />
---}}  
-<!-- GOOGLE FONTS-->
 </head>
 <body>
   <div id="wrapper">
@@ -68,9 +54,17 @@
     <div style="color: white;
     padding: 15px 50px 5px 50px;
     float: right;
-    font-size: 16px;">
+    font-size: 16px;">  
+      @if(!Auth::check())
+      <a href="{{ url('auth/login') }}"><span style="height:22px;" class="label label-primary">Login</span></a>
+      <a href="{{ url('auth/register') }}"><span style="height:22px;" class="label label-primary">Register</span></a>
+      @else
+      <a href="{{ url('auth/logout') }}"><span style="height:22px;" class="label label-primary">Logout</span></a>
+      @endif
 
-  </div>
+
+
+    </div>
 </nav>   
 <!-- /. NAV TOP  -->
 <nav class="navbar-default navbar-side" role="navigation">
@@ -94,10 +88,10 @@
             <b>Games</b></a>
           </li>
           <li>
-            <a  href="?view=manage-playlists"><i class="glyphicon glyphicon-list-alt fa-6x"></i>Manage Games</a>
+            <a  href="{{ url('games') }}"><i class="glyphicon glyphicon-list-alt fa-6x"></i>Manage Games</a>
           </li>
           <li>
-            <a  href="#"><i class="glyphicon glyphicon-plus fa-6x"></i> New Game</a>
+            <a  href="{{ url('games/create') }}"><i class="glyphicon glyphicon-plus fa-6x"></i> New Game</a>
           </li>
         </ul>
       </div>
@@ -108,9 +102,9 @@
       <div id="page-inner">
         <div class="container">
           @yield('pageTitle')
-          @if(Auth::check())
+{{--           @if(Auth::check())
             Welcome, <span style="text-transform: capitalize;">{{ $currentUser->name }}</span>
-          @endif
+          @endif --}}
           @yield('content')  
         </div>
         <!-- /. PAGE INNER  -->
@@ -119,17 +113,6 @@
       <!-- /. PAGE WRAPPER  -->
     </div>
     <!-- /. WRAPPER  -->
-    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-
-    <!--
-    <script src="_asset/js/jquery-1.10.2.js"></script>
-    <script src="_asset/js/bootstrap.min.js"></script>
-    <script src="_asset/js/jquery.metisMenu.js"></script>
-    <script src="_asset/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="_asset/js/morris/morris.js"></script>
-    <script src="_asset/js/custom.js"></script>
-  -->
   {!! HTML::script('_asset/js/jquery-1.10.2.js') !!}
   {!! HTML::script('_asset/js/bootstrap.min.js') !!}
   {!! HTML::script('_asset/js/jquery.metisMenu.js') !!}

@@ -16,8 +16,6 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('game_id')->unsigned();//oneToOne
-
-
             $table->timestamps();
         });
     }

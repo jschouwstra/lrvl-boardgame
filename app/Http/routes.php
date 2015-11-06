@@ -16,11 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('games','GameController@index');
-
 Route::get('games/create','GameController@create');
 Route::post('games', 'GameController@store');
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+Route::get('games/{id}', 'GameController@show');
+Route::get('games/edit/{id}','GameController@edit');
+
