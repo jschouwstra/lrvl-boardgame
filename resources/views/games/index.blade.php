@@ -1,6 +1,8 @@
 @extends('layout.master')
 @section('content')
 <h1>Games</h1>
+@if(Auth::check())
+@if(count($currentUser->games))
 <div class="row">
 	<div class="col-md-10">	
 		<div class="table-responsive">	
@@ -9,36 +11,59 @@
 					<td>Name</td><td>Category</td><td colspan="3">Action</td>
 				</thead>
 				<tbody>	
-				@if(Auth::check())
-					@if($currentUser->games)
 					@foreach($currentUser->games as $Game)
-							<tr>
-								<td>{{ $Game->name }}</td>
-								<td>
-									{{ $Game->category->name }}
-								</td>
-								<td>	
-									<a href="{{ url('/games', $Game->id) }}">
-										Show more</button>
-									</a>
-								</td>
-							
-								<td>
-									<a href="{{ url('/games/edit', $Game->id) }}">Edit</a>
-								</td>
-								<td>
-									<a href="{{ url('/games/delete', $Game->id) }}">Delete</a>
-								</td>
-							</tr>	
+					<tr>
+						<td>{{ $Game->name }}</td>
+						<td>
+							{{ $Game->category->name }}
+						</td>
+						<td>	
+							<a href="{{ url('/games', $Game->id) }}">
+								Show more</button>
+							</a>
+						</td>
+
+						<td>
+							<a href="{{ url('/games/'.$Game->id.'/edit') }}">Edit</a>
+						</td>
+						<td>
+							<script>
+
+							function ConfirmDelete()
+							{
+								var x = confirm("Are you sure you want to delete?");
+								if (x)
+									return true;
+								else
+									return false;
+							}
+
+							</script>
+
+							{!! Form::open(array('url' => 'games/' . $Game->id, 'class' => '', 'onsubmit' => 'return ConfirmDelete()')) !!}
+							{!! Form::hidden('_method', 'delete') !!}
+							{!! Form::submit('Delete this game', array('class' => 'btn btn-warning')) !!}
+							{!! Form::close() !!}
+						</td>
+					</tr>	
 					@endforeach	
+					@else
+					<p>
+						<span class="alert alert-danger">
+							No games assigned yet.
+							
+						</span>
+					</p>	
+					<p>
+						<a href="{{ url('games/create') }}">
+							Add a game
+						</a> to start.
+					</p>
+					@endif
+					@else
+					no login
+					@endif
 				</tbody>
 			</table>
-						@else
-						no game assigned
-					@endif
-				@else
-				no login
-				@endif
 
-
-@endsection
+			@endsection

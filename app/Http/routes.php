@@ -15,13 +15,19 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
-Route::get('games','GameController@index');
-Route::get('games/create','GameController@create');
-Route::post('games', 'GameController@store');
+// Route::get('games','GameController@index');
+// Route::get('games/create','GameController@create');
+// Route::post('games', 'GameController@store');
+// Route::post('games', 'GameController@update');
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-Route::get('games/{id}', 'GameController@show');
-Route::get('games/edit/{id}','GameController@edit');
 
+//
+// Route::get('games/{id}', 'GameController@show');
+// Route::get('games/edit/{id}','GameController@edit');
+
+//
+ Route::resource('games', 'GameController');
+ Route::resource('gamegroups', 'GamegroupController');

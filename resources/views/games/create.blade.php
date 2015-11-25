@@ -11,9 +11,9 @@
 				{!! Form::label('category_id', 'Category:') !!}
 				<div class="form-group">			
 					{!! Form::select('category_id', [
-					'1' => 'Dice game',
-					'2' => 'Card game',
-					'3' => 'Board game'
+						'1' => 'Dice game',
+						'2' => 'Card game',
+						'3' => 'Board game'
 					]
 					) !!}
 				</div>

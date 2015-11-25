@@ -29,11 +29,11 @@
       <span style="margin-right: 49px;">Boardgame collection</span>
       <div id="" class="btn-group">
         <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="margin-left:10px;margin-right:5px;">
-         Boardgame Playlist &nbsp;<span class="caret"></span>
+         Boardgame Gamegroups &nbsp;<span class="caret"></span>
        </button>
        <ul class="dropdown-menu">
-        <li><a href="#">Manage Playlists</a></li>
-        <li><a href="#">New Playlist</a></li>
+        <li><a href="#">Manage Gamegroup</a></li>
+        <li><a href="#">New Gamegroup</a></li>
 
       </ul>
     </div>
@@ -75,13 +75,13 @@
             <b>Home</b></a>
         </li>        <li>
           <a style="background-color: #0b62a4;" href="#"><i class="glyphicon glyphicon-play fa-1x"></i> 
-            <b>Playlists</b></a>
+            <b>Gamegroups</b></a>
         </li>
         <li>
-          <a  href="?view=manage-playlists"><i class="glyphicon glyphicon-list-alt fa-6x"></i>Manage Playlists</a>
+          <a  href="{{ url('gamegroups') }}"><i class="glyphicon glyphicon-list-alt fa-6x"></i>Manage Gamegroups</a>
         </li>
         <li>
-          <a  href="#"><i class="glyphicon glyphicon-plus fa-6x"></i> New Playlist</a>
+          <a  href="{{ url('gamegroups/create') }}"><i class="glyphicon glyphicon-plus fa-6x"></i> New Gamegroup</a>
         </li>
         <li>
           <a style="background-color: #0b62a4;" href="#"><i class="glyphicon glyphicon-tower fa-1x"></i> 
