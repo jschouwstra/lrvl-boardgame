@@ -14,8 +14,8 @@ class CreateGameGamegroup extends Migration
     {
         Schema::create('game_gamegroup', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('game_id');
-            $table->integer('gamegroup_id');
+            $table->integer('game_id')->unsigned();
+            $table->integer('gamegroup_id')->unsigned();
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class Gamegroup extends Model
         return $this->belongsTo('App\User');
 	}	
 	public function games(){
-        return $this->hasMany('App\Game');
+        //return $this->hasMany('App\Game');
+        return $this->belongsToMany('App\Game');
 	}
 }
