@@ -28,7 +28,6 @@
 						</td>
 						<td>
 							<script>
-
 							function ConfirmDelete()
 							{
 								var x = confirm("Are you sure you want to delete?");
@@ -37,7 +36,6 @@
 								else
 									return false;
 							}
-
 							</script>
 
 							{!! Form::open(array('url' => 'games/' . $Game->id, 'class' => '', 'onsubmit' => 'return ConfirmDelete()')) !!}
@@ -61,7 +59,26 @@
 					</p>
 					@endif
 					@else
-					no login
+					<p>
+						<span class="alert alert-danger">
+							You need to login to show games.
+							
+						</span>
+					</p>	
+					<p>
+						Please
+						<a href="{{ url('games/create') }}">
+							 sign in
+						</a> 
+						to show your games.
+					</p>
+					<p>
+						Or					
+						<a href="{{ url('auth/register') }}">
+							 Register
+						</a> 
+						to start adding your games.
+					</p>
 					@endif
 				</tbody>
 			</table>

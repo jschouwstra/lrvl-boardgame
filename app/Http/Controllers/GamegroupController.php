@@ -11,24 +11,19 @@ use App\Gamegroup;
 
 class GamegroupController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct() {
+        $this->middleware('auth',['except' => 
+            'index'
+        ]);
+    }
     public function index()
     {
-        if(\Auth::check()){
         $currentUser = \Auth::user();
         $gamegroup = Gamegroup::all();
         return view('gamegroups.index',[
             'gamegroups'    => $gamegroup,
             'currentUser'   => $currentUser
         ]);
-        }
-        else{
-            return redirect('auth/login');
-        }
     }
 
     /**
@@ -38,12 +33,7 @@ class GamegroupController extends Controller
      */
     public function create()
     {
-        if(\Auth::check()){
-            return view('gamegroups.create');        
-        }
-        else{
-            return redirect('auth/login');
-        }
+        return view('gamegroups.create');        
     }
 
     /**

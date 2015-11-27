@@ -16,8 +16,13 @@ use Request;
 
 class GameController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth',['except' => 
+            'index'
+        ]);
+    }
+
     public function index() {
-        if(\Auth::check()){
         //for test only
         $currentUser =  \Auth::user();
         //echo $currentUser->name;
@@ -27,24 +32,15 @@ class GameController extends Controller
          return view('games.index', [
             'games'            => $game,
             'currentUser'      => $currentUser]);
-        }
-        else{
-            return redirect('auth/login');
-        }
     }
 
     public function create() {
-        if(\Auth::check()){
             $category = Category::all();
             $games = Game::all();
             return view('games.create', [
                 'categories' => $category,
                 'games' => $games
             ]);    
-        }
-        else{
-            return redirect('auth/login');
-        }
     }
 
     public function store(GameRequest $request) {
@@ -56,32 +52,28 @@ class GameController extends Controller
 
     public function show($id) {
         $game = Game::findOrFail($id);
-        return view('games.show', compact('game'));    
+        return view('games.show', ['game'=> $game]);    
     }
 
     public function edit($id) {
         $category = Category::all();
         $game = Game::findOrFail($id);
+
         return view('games.edit', compact('game','category'));
-        }
+    }
 
-public function update($id, GameRequestUpdate $request) {
-    $game = Game::findOrFail($id);
-    $game->update($request->all());
-    return redirect('games');
-    // $game = Game::findOrFail($id);
-    // $input = $request->all();
+    public function update($id, GameRequestUpdate $request) {
+        $game = Game::findOrFail($id);
+        $game->update($request->all());
 
-    // $game->fill($input)->save();
-    // return redirect('games');
-}
+        return redirect('games');
+    }
 
     public function destroy($id) {
  // delete
         $game = Game::find($id);
         $game->delete();
 
-        // redirect
         return redirect('games');
     }
 }
