@@ -119,6 +119,5 @@
   {!! HTML::script('_asset/js/morris/raphael-2.1.0.min.js') !!}
   {!! HTML::script('_asset/js/morris/morris.js') !!}
   {!! HTML::script('_asset/js/custom.js') !!}
-
   </body>
   </html>

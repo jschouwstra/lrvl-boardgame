@@ -63,10 +63,17 @@ class GameController extends Controller
     }
 
     public function update($id, GameRequestUpdate $request) {
+        /*
+        Original, don't change
         $game = Game::findOrFail($id);
         $game->update($request->all());
+        return redirect('games');      
+        */
 
-        return redirect('games');
+        $game = Game::findOrFail($id);
+        $filtered_game = str_replace('thefword', 'f***', $game);
+        echo $filtered_game;
+
     }
 
     public function destroy($id) {
