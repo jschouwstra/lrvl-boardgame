@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\GamegroupRequest;
+
 use App\Http\Controllers\Controller;
 
 use App\Gamegroup;
+use Request;
 
 class GamegroupController extends Controller
 {
@@ -42,7 +45,7 @@ class GamegroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GamegroupRequest $request)
     {
         $gamegroup = new Gamegroup($request->all());
         \Auth::user()->gamegroups()->save($gamegroup);

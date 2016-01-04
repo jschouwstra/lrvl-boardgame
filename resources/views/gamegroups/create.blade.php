@@ -1,7 +1,6 @@
 @extends('layout.master')
 @section('content')
 	<h1>New Gamegroup</h1>
-	@if(auth::check())
 	<div class="row">
 		<div class="col-md-6">	
 			{!! Form::open(['url' => 'gamegroups']) !!}
@@ -24,7 +23,6 @@
 			@endif
 		</div>
 	</div>
-	@else
-	@endif
+
 	
 @endsection

@@ -27,39 +27,25 @@
       float: left;
       font-size: 16px;"> 
       <span style="margin-right: 49px;">Boardgame collection</span>
-      <div id="" class="btn-group">
+{{--       <div id="" class="btn-group">
         <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="margin-left:10px;margin-right:5px;">
-         Boardgame Gamegroups &nbsp;<span class="caret"></span>
-       </button>
-       <ul class="dropdown-menu">
-        <li><a href="#">Manage Gamegroup</a></li>
-        <li><a href="#">New Gamegroup</a></li>
-
-      </ul>
-    </div>
-
-    <div id="" class="btn-group">
-      <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" style="margin-left:10px;margin-right:5px;">
-        Action &nbsp;<span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a href="#">Action2</a></li>
-        <li><a href="#">Another action2</a></li>
-        <li><a href="#">Something else here2</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Separated link2</a></li>
-      </ul>
-    </div>
+        Boardgame Gamegroups &nbsp;<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Manage Gamegroup</a></li>
+          <li><a href="#">New Gamegroup</a></li>
+        </ul>
+      </div> --}}
 
     <div style="color: white;
     padding: 15px 50px 5px 50px;
     float: right;
     font-size: 16px;">  
       @if(!Auth::check())
-      <a href="{{ url('auth/login') }}"><span style="height:22px;" class="label label-primary">Login</span></a>
-      <a href="{{ url('auth/register') }}"><span style="height:22px;" class="label label-primary">Register</span></a>
+        <a href="{{ url('auth/login') }}"><span style="height:22px;" class="label label-primary">Login</span></a>
+        <a href="{{ url('auth/register') }}"><span style="height:22px;" class="label label-primary">Register</span></a>
       @else
-      <a href="{{ url('auth/logout') }}"><span style="height:22px;" class="label label-primary">Logout</span></a>
+        <a href="{{ url('auth/logout') }}"><span style="height:22px;" class="label label-primary">Logout</span></a>
       @endif
 
 
@@ -116,8 +102,8 @@
   {!! HTML::script('_asset/js/jquery-1.10.2.js') !!}
   {!! HTML::script('_asset/js/bootstrap.min.js') !!}
   {!! HTML::script('_asset/js/jquery.metisMenu.js') !!}
-  {!! HTML::script('_asset/js/morris/raphael-2.1.0.min.js') !!}
-  {!! HTML::script('_asset/js/morris/morris.js') !!}
+{{--   {!! HTML::script('_asset/js/morris/raphael-2.1.0.min.js') !!}
+  {!! HTML::script('_asset/js/morris/morris.js') !!} --}}
   {!! HTML::script('_asset/js/custom.js') !!}
   </body>
   </html>

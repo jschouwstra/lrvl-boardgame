@@ -39,8 +39,8 @@
 							</script>
 
 							{!! Form::open(array('url' => 'games/' . $Game->id, 'class' => '', 'onsubmit' => 'return ConfirmDelete()')) !!}
-							{!! Form::hidden('_method', 'delete') !!}
-							{!! Form::submit('Delete this game', array('class' => 'btn btn-warning')) !!}
+								{!! Form::hidden('_method', 'delete') !!}
+								{!! Form::submit('Delete this game', array('class' => 'btn btn-warning')) !!}
 							{!! Form::close() !!}
 						</td>
 					</tr>	
@@ -53,7 +53,7 @@
 						</span>
 					</p>	
 					<p>
-						<a href="{{ url('games/create') }}">
+						<a href="{{ url('auth/login') }}">
 							Add a game
 						</a> to start.
 					</p>
@@ -68,7 +68,7 @@
 					<p>
 						Please
 						<a href="{{ url('games/create') }}">
-							 sign in
+							 Sign in
 						</a> 
 						to show your games.
 					</p>

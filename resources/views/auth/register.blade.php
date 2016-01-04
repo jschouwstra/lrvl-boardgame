@@ -1,6 +1,5 @@
 @extends('layout.master')
-
-
+<h1>Register</h1>
 @section('content')
 <div class="container-fluid">
 	<div class="row">

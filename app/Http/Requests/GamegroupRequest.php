@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 use App\User;
 
-class GameRequest extends Request
+class GamegroupRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,7 @@ class GameRequest extends Request
     {
     return [
         'name'          => 'required|
-                            unique:games,name,NULL,id,user_id,'.\Auth::user()->id,
-
-        'category_id'   => 'required'   
+                            unique:gamegroups,name,NULL,id,user_id,'.\Auth::user()->id
         ];
     }
 }

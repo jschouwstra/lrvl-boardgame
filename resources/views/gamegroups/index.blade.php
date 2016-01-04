@@ -2,9 +2,6 @@
 
 @section('content')
 <h1>Gamegroups</h1>
-
-
-
 @if(Auth::check())
 	@if(count($currentUser->gamegroups))
 	<div class="row">
@@ -13,14 +10,12 @@
 				<table class="table table-striped table-hover table-bordered">
 					<thead>
 						<td>Name</td>
-						<td colspan="3">Action</td>
 					</thead>
 					<tbody>
 						@foreach($currentUser->gamegroups as $gamegroup)
 							<tr>
-								<td>{{ $gamegroup->name }}</td>
 								<td>
-									<a href="{{ url('/gamegroups', $gamegroup->id) }}">Show more</a>
+									<a href="{{ url('/gamegroups', $gamegroup->id) }}">{{ $gamegroup->name }}</a>
 								</td>
 							</tr>
 						@endforeach
@@ -42,7 +37,26 @@
 			</p>
 	@endif
 @else
-no login	
+<p>
+	<span class="alert alert-danger">
+		You need to login to show your gamegroups.
+		
+	</span>
+</p>	
+<p>
+	Please
+	<a href="{{ url('auth/login') }}">
+		 Sign in
+	</a> 
+	to show your gamegroups.
+</p>
+<p>
+	Or					
+	<a href="{{ url('auth/register') }}">
+		 Register
+	</a> 
+	to start adding your gamegroups.
+</p>
 @endif
 	</div>
 </div>	
